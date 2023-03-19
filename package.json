@@ -22,9 +22,11 @@
     "build": "tsc",
     "dev": "nodemon --watch src --delay 1 --exec 'ts-node' src/server.ts",
     "test": "jest --forceExit --detectOpenHandles",
-    "lint": "tslint -p tsconfig.json -c tslint.json"
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
+    "class-validator": "^0.14.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
