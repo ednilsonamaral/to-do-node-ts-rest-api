@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "sourceMap": true,
+      "target": "ES2018",
+      "outDir": "./dist",
+      "baseUrl": "./src",
+      "alwaysStrict": true,
+      "noImplicitAny": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "allowSyntheticDefaultImports": true,
+      "resolveJsonModule": true,
+      "moduleResolution": "node",
+      "typeRoots": ["./node_modules/@types"]
+    },
+    "include": ["src/**/*.ts", "src/models/.model.ts", "src/assets/json/*.json"],
+    "exclude": ["node_modules", "src/**/*.test.ts"]
+  }
+  
