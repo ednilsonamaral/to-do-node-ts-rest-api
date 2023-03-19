@@ -1,6 +1,7 @@
 import * as cors from 'cors';
 import * as express from 'express';
 import * as http from 'http';
+import * as swagger from 'swagger-express-ts';
 
 import Routes from './interfaces/routes.interface';
 
@@ -16,6 +17,7 @@ class App {
         this.env = process.env.NODE_ENV !== 'development' ? true : false;
 
         this.startMiddlewares();
+        this.startSwagger();
     }
 
     public listen(): http.Server {
@@ -43,6 +45,24 @@ class App {
         this.app.use(cors());
         this.app.use(express.json({ limit: '5mb' }));
         this.app.use(express.urlencoded({ extended: true, limit: '5mb', parameterLimit: 50000 }));
+    }
+
+    private startSwagger() {
+        this.app.use('/api/v1/docs', express.static('swagger'));
+        this.app.use(swagger.express(
+            {
+              definition: {
+                info: {
+                  title: 'Tasks API',
+                  version: '1.0',
+                },
+                externalDocs: {
+                  url: process.env.BASE_URL || 'http://localhost:' + process.env.PORT,
+                },
+              },
+            },
+          )
+        );
     }
 
 
