@@ -10,6 +10,16 @@ class IndexController {
         }
     }
 
+    public healthCheck = (req: Request, res: Response, next: NextFunction) => {
+        try {
+            res.status(200).json({
+                message: '😊 API its ok, buddy!'
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+
 }
 
 export default IndexController;

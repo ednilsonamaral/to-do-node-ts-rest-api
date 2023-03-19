@@ -16,6 +16,7 @@ class IndexRoute implements Route {
 
     private startRoutes() {
         this.router.get(`${this.path}`, this.indexController.index);
+        this.router.get(`${this.path}health-check`, this.indexController.healthCheck);
     }
 
 }
